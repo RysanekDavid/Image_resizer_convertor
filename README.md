@@ -1,40 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 🖼️ Image Resizer & Converter
 
-## Getting Started
+Moderní webová aplikace pro převod a úpravu obrázků přímo v prohlížeči. Veškeré zpracování probíhá na straně klienta, bez odesílání dat na server.
 
-First, run the development server:
+## ✨ Funkce
+
+- **Víceformátová konverze** – převod mezi formáty PNG, JPEG a WebP
+- **Změna velikosti** – možnost zmenšit rozměry obrázků před konverzí
+- **Hromadné zpracování** – nahrání a převod více obrázků najednou
+- **Drag & Drop** – jednoduché přetahování souborů
+- **Nastavení kvality** – regulace komprese pro WebP a JPEG
+- **Hromadné stažení** – stáhnutí všech zkonvertovaných obrázků v ZIP souboru
+- **Tmavý design** – moderní a přívětivé uživatelské rozhraní
+
+## 🚀 Rychlý start
 
 ```bash
+# Instalace závislostí
+npm install
+
+# Spuštění vývojového serveru
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Aplikace poběží na [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Technologie
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- **Next.js** – React framework
+- **TypeScript** – typovaný JavaScript
+- **Canvas API** – zpracování obrázků v prohlížeči
+- **JSZip** – vytváření ZIP souborů
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+## 📦 Instalace
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+```
 
-## Learn More
+## 🎯 Použití
 
-To learn more about Next.js, take a look at the following resources:
+1. Nahrajte obrázky (JPG, PNG, WebP) pomocí tlačítka nebo přetažením
+2. Vyberte cílový formát pro jednotlivé obrázky nebo pro všechny najednou
+3. Volitelně nastavte nové rozměry
+4. Klikněte na "Převést" nebo "Převést všechny"
+5. Stáhněte zkonvertované obrázky jednotlivě nebo všechny najednou v ZIP
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+## 📝 Poznámky
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Všechny operace probíhají lokálně v prohlížeči
+- Žádná data nejsou odesílána na server
+- Podporované vstupní formáty: JPG, JPEG, PNG, WebP
+- Podporované výstupní formáty: PNG, JPEG, WebP
 
-## Deploy on Vercel
+## 📄 Licence
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+MIT
