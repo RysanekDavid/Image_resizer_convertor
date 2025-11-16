@@ -4,7 +4,7 @@ import { useCallback, useState } from "react";
 
 import { ImageItem, ConversionFormat } from "../types";
 
-import { supportedInputMime, formatToMime, createId } from "../utils";
+import { supportedInputMime, formatToMime, formatToExtension, createId } from "../utils";
 
 
 
@@ -646,11 +646,7 @@ export const useImageConverter = () => {
 
         const blob = await response.blob();
 
-        const fileName = `${item.file.name.replace(/\.[^/.]+$/, "")}.${
-
-          item.outputFormat
-
-        }`;
+        const fileName = `${item.file.name.replace(/\.[^/.]+$/, "")}_${item.outputFormat}.${formatToExtension[item.outputFormat]}`;
 
         zip.file(fileName, blob);
 

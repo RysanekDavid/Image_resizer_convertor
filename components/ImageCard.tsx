@@ -4,7 +4,12 @@ import React from "react";
 
 import { ImageItem, ConversionFormat } from "./types";
 
-import { formatFileSize, formatSaving, formatLabel } from "./utils";
+import {
+  formatFileSize,
+  formatSaving,
+  formatLabel,
+  formatToExtension,
+} from "./utils";
 
 interface ImageCardProps {
   item: ImageItem;
@@ -426,9 +431,9 @@ export const ImageCard = ({
         {item.convertedUrl && !item.isConverting && (
           <a
             href={item.convertedUrl}
-            download={`${item.file.name.replace(/\.[^/.]+$/, "")}.${
+            download={`${item.file.name.replace(/\.[^/.]+$/, "")}_${
               item.outputFormat
-            }`}
+            }.${formatToExtension[item.outputFormat]}`}
             style={{
               fontSize: "0.85rem",
 

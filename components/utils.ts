@@ -32,6 +32,18 @@ export const formatLabel: Record<ConversionFormat, string> = {
 
 
 
+export const formatToExtension: Record<ConversionFormat, string> = {
+
+  webp: "webp",
+
+  jpeg: "jpg",
+
+  png: "png",
+
+};
+
+
+
 export const createId = (): string => {
 
   if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
