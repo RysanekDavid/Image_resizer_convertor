@@ -2,15 +2,21 @@
 
 import React from "react";
 
+import { ConversionFormat } from "./types";
+
 import { useImageConverter } from "./hooks/useImageConverter";
 
 import { UploadArea } from "./UploadArea";
 
 import { QualitySlider } from "./QualitySlider";
 
-import { ControlsBar } from "./ControlsBar";
+import { ControlsBar } from "./ControlsBar/ControlsBar";
 
 import { ImageGrid } from "./ImageGrid";
+
+import { ResizePanel } from "./ResizePanel";
+
+import { StatisticsBar } from "./StatisticsBar";
 
 import { ErrorMessage } from "./ErrorMessage";
 
@@ -48,6 +54,8 @@ export const ImageConverter = (): React.ReactElement => {
 
     handleRemoveImage,
 
+    handleClearAll,
+
     handleSetFormatForAll,
 
     handleResizeForAll,
@@ -82,24 +90,46 @@ export const ImageConverter = (): React.ReactElement => {
           imagesCount={images.length}
           hasConvertedImages={hasConvertedImages}
           isCreatingZip={isCreatingZip}
+          currentFormat={
+            images.length > 0
+              ? (() => {
+                  const formats = images.map((img) => img.outputFormat);
+                  const formatCounts = formats.reduce((acc, format) => {
+                    acc[format] = (acc[format] || 0) + 1;
+                    return acc;
+                  }, {} as Record<ConversionFormat, number>);
+                  const mostCommon = Object.entries(formatCounts).sort(
+                    (a, b) => b[1] - a[1]
+                  )[0]?.[0] as ConversionFormat | undefined;
+                  return mostCommon;
+                })()
+              : undefined
+          }
           onFormatChangeForAll={handleSetFormatForAll}
           onResizeForAll={handleResizeForAll}
           onConvertAll={handleConvertAll}
           onDownloadAllAsZip={handleDownloadAllAsZip}
+          onClearAll={handleClearAll}
         />
       )}
 
       {images.length === 0 && <EmptyState />}
 
       {images.length > 0 && (
-        <ImageGrid
-          images={images}
-          onFormatChange={handleFormatChange}
-          onResizeToggle={handleResizeToggle}
-          onResizeInputChange={handleResizeInputChange}
-          onConvert={convertSingleImage}
-          onRemove={handleRemoveImage}
-        />
+        <>
+          <StatisticsBar images={images} />
+          <ResizePanel
+            images={images}
+            onResizeToggle={handleResizeToggle}
+            onResizeInputChange={handleResizeInputChange}
+          />
+          <ImageGrid
+            images={images}
+            onFormatChange={handleFormatChange}
+            onConvert={convertSingleImage}
+            onRemove={handleRemoveImage}
+          />
+        </>
       )}
     </section>
   );
